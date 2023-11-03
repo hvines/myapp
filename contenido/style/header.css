@@ -1,0 +1,11 @@
+/* Estilos para el header */
+header {
+    height: 25vh;
+    background: #76a68b;
+    font-family: '1942_report', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  

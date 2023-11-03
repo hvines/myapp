@@ -1,0 +1,13 @@
+/* Estilos para los enlaces de navegación */
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: #bcd5b0;
+  }
+  

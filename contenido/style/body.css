@@ -1,0 +1,9 @@
+/* Estilos para el body */
+body {
+    width: 100%;
+    background: rgb(187, 149, 46);
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  

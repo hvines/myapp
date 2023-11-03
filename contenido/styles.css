@@ -1,0 +1,42 @@
+/* Estilos para el body */
+body {
+  width: 100%;
+  background: #ff6;
+  min-height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif; /* Cambia la fuente a Arial o la que prefieras */
+}
+
+/* Estilos para el header */
+header {
+  height: 25vh;
+  background: #76a68b;
+  font-family: '1942_report', sans-serif; /* Utiliza la fuente personalizada y luego las fuentes de respaldo */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilos de fuente */
+h1 {
+  color: #fff;
+  font-size: 2rem; /* Tamaño de fuente personalizado */
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra de texto */
+}
+
+/* Agrega estilos para otros elementos si es necesario */
+
+/* Estilos para los enlaces de navegación */
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: bold;
+  transition: color 0.3s ease; /* Transición de color suave en el enlace */
+}
+
+.nav-link:hover {
+  color: #bcd5b0; /* Cambia el color al pasar el mouse */
+}
