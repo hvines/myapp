@@ -1,8 +1,12 @@
-## Siempre para actualizar
+## GitHub de respaldo en caso de caida de AWS
 
-# Para inicializar
 
-## mongo
+
+
+
+## Para ir probando:
+
+## Mongo
 
 - git start some-mongo
 
@@ -10,7 +14,7 @@
 
 git fetch
 
-## Para inciar la app
+## Para iniciar la app
 
 npm start
 
