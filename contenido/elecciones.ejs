@@ -1,98 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Elecciones</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-  <style> 
-    /* Estilos para el body */
-  body {
-      width: 100%;
-      background: rgb(187, 149, 46);
-      min-height: 100vh;
-      margin: 0;
-      font-family: Arial, sans-serif; /* Cambia la fuente a Arial o la que prefieras */
-    }
-    
-    /* Estilos para el header */
-    header {
-      height: 25vh;
-      background: #76a68b;
-      font-family: '1942_report', sans-serif; /* Utiliza la fuente personalizada y luego las fuentes de respaldo */
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    /* Estilos de fuente */
-    h1 {
-      color: #fff;
-      font-size: 2rem; /* Tamaño de fuente personalizado */
-      text-align: center;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra de texto */
-    }
-    
-    /* Agrega estilos para otros elementos si es necesario */
-    
-    /* Estilos para los enlaces de navegación */
-    .nav-link {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 10px;
-      font-weight: bold;
-      transition: color 0.3s ease; /* Transición de color suave en el enlace */
-    }
-    
-    .nav-link:hover {
-      color: #bcd5b0; /* Cambia el color al pasar el mouse */
-    }
-</style>
-</head>
-<body>
-  <header style="background-color: green; position: relative;">
-    <a href="/" style="position: absolute; top: 10px; left: 10px; color: white; text-decoration: none;">
-      <i class="fas fa-home fa-2x"></i>
-    </a>
-    <div class="container">
-      <div class="row">
-        <div class="col-6">
-          <h1>Elecciones Disponibles</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elecciones</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Estilos para el body */
+      body {
+        width: 100%;
+        background: rgb(187, 149, 46);
+        min-height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif; /* Cambia la fuente a Arial o la que prefieras */
+      }
+
+      /* Estilos para el header */
+      header {
+        height: 25vh;
+        background: #76a68b;
+        font-family: "1942_report", sans-serif; /* Utiliza la fuente personalizada y luego las fuentes de respaldo */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* Estilos de fuente */
+      h1 {
+        color: #fff;
+        font-size: 2rem; /* Tamaño de fuente personalizado */
+        text-align: center;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra de texto */
+      }
+
+      /* Agrega estilos para otros elementos si es necesario */
+
+      /* Estilos para los enlaces de navegación */
+      .nav-link {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 10px;
+        font-weight: bold;
+        transition: color 0.3s ease; /* Transición de color suave en el enlace */
+      }
+
+      .nav-link:hover {
+        color: #bcd5b0; /* Cambia el color al pasar el mouse */
+      }
+    </style>
+  </head>
+  <body>
+    <header style="background-color: green; position: relative">
+      <a
+        href="/"
+        style="
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          color: white;
+          text-decoration: none;
+        "
+      >
+        <i class="fas fa-home fa-2x"></i>
+      </a>
+      <div class="container">
+        <div class="row">
+          <div class="col-6">
+            <h1>Elecciones Disponibles</h1>
+          </div>
         </div>
       </div>
-    </div>
-  </header>
-  <main>
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <h2>Datos de Ejemplo</h2>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>ID Evento</th>
-                <th>Nombre del Evento</th>
-                <th>Fecha de Creación</th>
-                <th>Espacio Vacío</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% datosElecciones.forEach(eleccion => { %>
+    </header>
+    <main>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h2>Datos</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID Evento</th>
+                  <th>Nombre del Evento</th>
+                  <th>Fecha de Creación</th>
+                  <th>Espacio Vacío</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% datosElecciones.forEach(eleccion => { %>
                 <tr>
                   <td><%= eleccion.id %></td>
                   <td><%= eleccion.nombre %></td>
                   <td><%= eleccion.fechaCreacion %></td>
-                  <td><a href="/ver_Eleccion">Ver Detalles</a></td>
+                  <td>
+                    <a href="/ver_Eleccion/<%= eleccion.id %>">Ver Detalles</a>
+                  </td>
                 </tr>
-              <% }); %>
-            </tbody>
-          </table>
+                <% }); %>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
-  </main>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-</body>
+    </main>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

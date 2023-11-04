@@ -24,10 +24,22 @@ const Administrador = mongoose.model("Administrador", administradorSchema);
 const candidatoSchema = new mongoose.Schema({
   nombre: String,
   indice: Number,
+  votos: Number,
+  evento: { type: mongoose.Schema.Types.ObjectId, ref: "Evento" },
 });
 
 // Definir el modelo Candidato
 const Candidato = mongoose.model("Candidato", candidatoSchema);
+
+const eventoSchema = new mongoose.Schema(
+  {
+    nombreEvento: String,
+    candidatos: [{ type: mongoose.Schema.Types.ObjectId, ref: "Candidato" }],
+  },
+  { timestamps: true }
+); // Habilita la creación de campos para timestamps
+
+const Evento = mongoose.model("Evento", eventoSchema);
 
 // Configuración de EJS como motor de vistas
 app.set("view engine", "ejs");
@@ -87,15 +99,28 @@ function obtenerFechaAleatoria() {
   return `${anio}-${mes}-${dia}`;
 }
 
-function obtenerDatosDeEleccionesAleatorios() {
-  const elecciones = [];
+async function obtenerDatosDeEleccionesReales() {
+  try {
+    // Obtenemos todos los eventos y populamos el campo de candidatos para cada uno
+    const eventos = await Evento.find().populate("candidatos").exec();
 
-  for (let i = 1; i <= 10; i++) {
-    const fechaCreacion = obtenerFechaAleatoria();
-    elecciones.push({ id: i, nombre: `Elección ${i}`, fechaCreacion });
+    // Mapeamos los eventos para reformatear la información que vamos a enviar al frontend
+    const datosElecciones = eventos.map((evento) => {
+      return {
+        id: evento._id,
+        nombre: evento.nombreEvento,
+        fechaCreacion: evento.createdAt, // Fecha de creación del evento
+        candidatos: evento.candidatos.map((candidato) => {
+          return { nombre: candidato.nombre, indice: candidato.indice };
+        }),
+      };
+    });
+
+    return datosElecciones;
+  } catch (error) {
+    console.error("Error al obtener los datos de las elecciones:", error);
+    return [];
   }
-
-  return elecciones;
 }
 
 app.post("/votar", (req, res) => {
@@ -104,17 +129,42 @@ app.post("/votar", (req, res) => {
   }, 3000);
 });
 
-// Ruta para ver las elecciones
-app.get("/elecciones", (req, res) => {
-  const datosElecciones = obtenerDatosDeEleccionesAleatorios();
-  res.render("elecciones", { datosElecciones });
+/**
+ * RUTA ELECCIONES
+ */
+app.get("/elecciones", async (req, res) => {
+  try {
+    const datosElecciones = await obtenerDatosDeEleccionesReales();
+    res.render("elecciones", { datosElecciones });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error al cargar las elecciones.");
+  }
 });
 
 // Ruta para ver eleccion en especifico
-app.get("/ver_Eleccion", (req, res) => {
-  const nombreEvento = "Elección Presidencial";
-  const estadoEvento = "En Curso";
-  res.render("ver_Eleccion", { nombreEvento, estadoEvento });
+app.get("/ver_Eleccion/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Encuentra el evento por el id proporcionado y populate los candidatos asociados
+    const evento = await Evento.findById(id).populate("candidatos");
+
+    if (!evento) {
+      return res.status(404).send("Evento no encontrado");
+    }
+
+    // Renderiza la plantilla con los datos del evento y sus candidatos
+    res.render("ver_Eleccion", {
+      nombreEvento: evento.nombreEvento,
+      estadoEvento: "En Curso", // Suponiendo que no tienes un campo para el estado del evento
+      candidatos: evento.candidatos, // Los candidatos son parte del evento
+      fechaCreacion: evento.createdAt, // Usando el campo generado por timestamps
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error interno del servidor");
+  }
 });
 
 // Ruta para formulario votar
@@ -169,23 +219,39 @@ app.post("/ingresar_Administrador", async (req, res) => {
   }
 });
 
-// Ruta para procesar la creación de elecciones
+/**
+ * RUTA CREAR ELECCIÓN
+ */
 app.post("/crear_Eleccion", async (req, res) => {
   const { nombreEvento, cantidadCandidatos } = req.body;
+  console.log(nombreEvento);
+  console.log(req.body);
 
   try {
-    const existeTablaCandidatos = await mongoose.connection.db
-      .listCollections({ name: "candidatos" })
-      .next();
-    if (!existeTablaCandidatos) {
-      mongoose.connection.db.createCollection("candidatos");
-    }
+    // Crear el evento
+    const nuevoEvento = new Evento({ nombreEvento });
+    await nuevoEvento.save();
+
+    // Crear candidatos asociados al evento
     const candidatos = [];
     for (let i = 1; i <= cantidadCandidatos; i++) {
       const candidatoNombre = req.body[`candidato${i}`];
-      candidatos.push({ nombre: candidatoNombre, indice: i });
+      const candidato = new Candidato({
+        nombre: candidatoNombre,
+        indice: i,
+        votos: 0,
+        evento: nuevoEvento._id, // Asocia cada candidato al evento
+      });
+      candidatos.push(candidato);
     }
+
+    // Insertar candidatos en la base de datos
     await Candidato.insertMany(candidatos);
+
+    // Actualizar el evento con los candidatos creados
+    nuevoEvento.candidatos = candidatos.map((candidato) => candidato._id);
+    await nuevoEvento.save();
+
     res.redirect("/elecciones");
   } catch (error) {
     console.error(error);

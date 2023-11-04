@@ -1,131 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página Principal</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Página Principal</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
 
-  <style> 
-    /* Estilos para el body */
-  body {
-      width: 100%;
-      background: rgb(187, 149, 46);
-      min-height: 100vh;
-      margin: 0;
-      font-family: Arial, sans-serif; /* Cambia la fuente a Arial o la que prefieras */
-    }
-    
-    /* Estilos para el header */
-    header {
-      height: 25vh;
-      background: #76a68b;
-      font-family: '1942_report', sans-serif; /* Utiliza la fuente personalizada y luego las fuentes de respaldo */
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    /* Estilos de fuente */
-    h1 {
-      color: #fff;
-      font-size: 2rem; /* Tamaño de fuente personalizado */
-      text-align: center;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra de texto */
-    }
-    
-    /* Agrega estilos para otros elementos si es necesario */
-    
-    /* Estilos para los enlaces de navegación */
-    .nav-link {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 10px;
-      font-weight: bold;
-      transition: color 0.3s ease; /* Transición de color suave en el enlace */
-    }
-    
-    .nav-link:hover {
-      color: #bcd5b0; /* Cambia el color al pasar el mouse */
-    }
-</style>
-</head>
-<body>
-  <header>
-    <div class="container">
-      <div class="row">
-        <div class="col-6">
-          <h1>Bienvenidos al portal de votaciones!</h1>
-        </div>
-        <div class="col-6">
-          <nav>
-            <ul class="nav justify-content-end">
+    <style>
+      /* Estilos para el body */
+      body {
+        width: 100%;
+        background: rgb(187, 149, 46);
+        min-height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif; /* Cambia la fuente a Arial o la que prefieras */
+      }
+
+      /* Estilos para el header */
+      header {
+        height: 25vh;
+        background: #76a68b;
+        font-family: "1942_report", sans-serif; /* Utiliza la fuente personalizada y luego las fuentes de respaldo */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* Estilos de fuente */
+      h1 {
+        color: #fff;
+        font-size: 2rem; /* Tamaño de fuente personalizado */
+        text-align: center;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra de texto */
+      }
+
+      /* Agrega estilos para otros elementos si es necesario */
+
+      /* Estilos para los enlaces de navegación */
+      .nav-link {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 10px;
+        font-weight: bold;
+        transition: color 0.3s ease; /* Transición de color suave en el enlace */
+      }
+
+      .nav-link:hover {
+        color: #bcd5b0; /* Cambia el color al pasar el mouse */
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="col-6">
+            <h1>Bienvenidos al portal de votaciones!</h1>
+          </div>
+          <div class="col-6">
+            <nav>
+              <ul class="nav justify-content-end">
                 <li class="nav-item">
                   <a class="nav-link" href="/">
-                    <i class="fas fa-home fa-2x"></i> 
+                    <i class="fas fa-home fa-2x"></i>
                   </a>
-                </li>                
-              <li class="nav-item">
-                <a class="nav-link" href="/elecciones"><i class="fas fa-vote-yea fa-2x"></i> Elecciones</a>
-              </li>
-              <li class="nav-item">
-                <% if (nombre_completo) { %>
-                  <a class="nav-link" href="/crear_Eleccion"><i class="far fa-clipboard fa-2x"></i> Crear Elecciones</a>
-                <% } %>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </div>
-  </header>
-  <main>
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <h2>Por favor, seleccione una opción:</h2>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div class="btn-group" role="group" aria-label="Opciones">
-            <li class="nav-item">
-              <a class="nav-link" href="/ingreso_Votaciones"><i class="fas fa-file-signature fa-2x"></i> Ingresar a las votaciones</a>
-            </li>            
-            <li class="nav-item">
-              <a class="nav-link" href="/ingresar_Administrador"><i class="fas fa-user fa-2x"></i> Ingresar Administrador</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/registrar_Administrador"><i class="fas fa-user-plus fa-2x"></i> Registrar Administrador</a>
-            </li>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/elecciones"
+                    ><i class="fas fa-vote-yea fa-2x"></i> Elecciones</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <% if (nombre_completo) { %>
+                  <a class="nav-link" href="/crear_Eleccion"
+                    ><i class="far fa-clipboard fa-2x"></i> Crear Elecciones</a
+                  >
+                  <% } %>
+                </li>
+              </ul>
+            </nav>
           </div>
         </div>
       </div>
-    </div>
-    <div class="position-fixed bottom-0 start-0 p-3" style="background-color: rgba(0, 0, 0, 0.6); color: white;">
-      <% if (nombre_completo) { %>
-        <%= nombre_completo %>
-      <% } else { %>
-        Usuario:
-      <% } %>
-    </div>
-  </main>
-  <script>
-    // JavaScript para ajustar dinámicamente el tamaño del header y el body
-    window.addEventListener('resize', () => {
-        const header = document.querySelector('header');
-        const main = document.querySelector('main');
+    </header>
+    <main>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h2>Por favor, seleccione una opción:</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div
+              class="btn-group flex flex-row"
+              role="group"
+              aria-label="Opciones"
+            >
+              <a class="nav-link ml-2" href="/ingreso_Votaciones"
+                ><i class="fas fa-file-signature fa-2x"></i> Ingresar a las
+                votaciones</a
+              >
+              <a class="nav-link ml-2" href="/ingresar_Administrador"
+                ><i class="fas fa-user fa-2x"></i> Ingresar Administrador</a
+              >
+              <a class="nav-link" href="/registrar_Administrador"
+                ><i class="fas fa-user-plus fa-2x"></i> Registrar
+                Administrador</a
+              >
+              <!-- <li class="nav-item">
+              
+            </li>             -->
+              <!-- <li class="nav-item">
+              
+            </li> -->
+              <!-- <li class="nav-item">
+              
+            </li> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="position-fixed bottom-0 start-0 p-3"
+        style="background-color: rgba(0, 0, 0, 0.6); color: white"
+      >
+        <% if (nombre_completo) { %> <%= nombre_completo %> <% } else { %>
+        Usuario: <% } %>
+      </div>
+    </main>
+    <script>
+      // JavaScript para ajustar dinámicamente el tamaño del header y el body
+      window.addEventListener("resize", () => {
+        const header = document.querySelector("header");
+        const main = document.querySelector("main");
         const windowHeight = window.innerHeight;
         const headerHeight = windowHeight / 4;
         const mainHeight = windowHeight - headerHeight;
         header.style.height = `${headerHeight}px`;
         main.style.height = `${mainHeight}px`;
-    });
-    // Disparar el evento resize al cargar la página
-    window.dispatchEvent(new Event('resize'));
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-</body>
+      });
+      // Disparar el evento resize al cargar la página
+      window.dispatchEvent(new Event("resize"));
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
