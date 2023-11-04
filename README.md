@@ -27,3 +27,4 @@ http://localhost:3000/
 git fetch
 git pull
 git fetch
+npm i
