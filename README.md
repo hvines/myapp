@@ -14,11 +14,11 @@ git fetch
 
 npm start
 
-## Link
+## Probando: Link a local
 
 http://localhost:3000/
 
-## Para actualizar en la isntancia
+## Para actualizar en la instancia en AWS
 
 git fetch
 git pull
