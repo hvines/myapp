@@ -17,3 +17,9 @@ npm start
 ## Link
 
 http://localhost:3000/
+
+## Para actualizar en la isntancia
+
+git fetch
+git pull
+git fetch
