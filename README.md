@@ -15,7 +15,7 @@
 git fetch
 
 ## Para iniciar la app
-
+- sudo bash
 - cd /var/www/html/myapp
 - pm2 start ecosystem.json
 
