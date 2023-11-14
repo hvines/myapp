@@ -16,7 +16,8 @@ git fetch
 
 ## Para iniciar la app
 
-npm start
+- cd /var/www/html/myapp
+- pm2 start ecosystem.json
 
 ## Probando: Link a local
 
